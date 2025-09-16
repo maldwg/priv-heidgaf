@@ -58,7 +58,7 @@
 
 ## About the Project
 
-![Pipeline overview](https://raw.githubusercontent.com/stefanDeveloper/heiDGAF/main/docs/media/pipeline_overview.png?raw=true)
+![Pipeline overview](./assets/heidgaf_architecture.svg)
 
 ## Getting Started
 
@@ -162,7 +162,7 @@ The full list of configuration parameters is available at the [documentation](ht
 | `pipeline.data_inspection.inspector.models` | List of models to use for data inspection (e.g., anomaly detection).      | Array of model definitions (e.g., `{"model": "ZScoreDetector", "module": "streamad.model", "model_args": {"is_global": false}}`)|
 | `pipeline.data_inspection.inspector.anomaly_threshold` | Threshold for classifying an observation as an anomaly.                     | `0.01`                                                                                                     |
 | `pipeline.data_analysis.detector.model`    | Model to use for data analysis (e.g., DGA detection).                       | `rf` (Random Forest) option: `XGBoost`                                                    |
-| `pipeline.data_analysis.detector.checksum` | Checksum for the model file to ensure integrity.                            | `ba1f718179191348fe2abd51644d76191d42a5d967c6844feb3371b6f798bf06`                                       |
+| `pipeline.data_analysis.detector.checksum` | Checksum for the model file to ensure integrity.                            | `021af76b2385ddbc76f6e3ad10feb0bb081f9cf05cff2e52333e31040bbf36cc`                                       |
 | `pipeline.data_analysis.detector.base_url` | Base URL for downloading the model if not present locally.                  | `https://heibox.uni-heidelberg.de/d/0d5cbcbe16cd46a58021/`                                                  |
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -241,7 +241,7 @@ loglines:
   fields:
     - [ "timestamp", RegEx, '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$' ]
     - [ "status_code", ListItem, [ "NOERROR", "NXDOMAIN" ], [ "NXDOMAIN" ] ]
-    - [ "client_ip", IpAddress ]
+    - [ "src_ip", IpAddress ]
     - [ "dns_server_ip", IpAddress ]
     - [ "domain_name", RegEx, '^(?=.{1,253}$)((?!-)[A-Za-z0-9-]{1,63}(?<!-)\.)+[A-Za-z]{2,63}$' ]
     - [ "record_type", ListItem, [ "A", "AAAA" ] ]
